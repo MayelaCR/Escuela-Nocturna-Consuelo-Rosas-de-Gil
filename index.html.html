@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escuela Consuelo Rosas de Gil</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body, html {
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #8d1e1e;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    header nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    header nav a:hover {
+      color: #e63946;
+    }
+
+    body {
+      padding-top: 80px;
+    }
+
+    .hero {
+      height: 100vh;
+      background: url('fondo.jpg') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    .hero a.button {
+      background-color: #8d1e1e;
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .hero a.button:hover {
+      background-color: #d62828;
+    }
+
+    .quienes-somos {
+      padding: 60px 30px;
+      background-color: #ffffff;
+      text-align: center;
+    }
+
+    .quienes-somos h2 {
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+
+    .quienes-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      text-align: left;
+    }
+
+    .info-tabla, .info-texto {
+      flex: 1;
+      min-width: 300px;
+      max-width: 500px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f0f0f0;
+    }
+
+    .info-texto p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .oferta {
+      background-color: #b04848;
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .oferta h2 {
+      font-size: 2em;
+      margin-bottom: 40px;
+    }
+
+    .oferta-contenedor {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .card {
+      background-color: white;
+      color: #333;
+      border-radius: 10px;
+      max-width: 300px;
+      text-align: left;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      margin-bottom: 10px;
+      font-size: 1.2em;
+    }
+
+    .card-content p {
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+
+    .contacto {
+      background-color: #f6f6f6;
+      padding: 80px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .contacto .formulario, .contacto .mapa {
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      max-width: 500px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .contacto h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    form label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    form button {
+      margin-top: 15px;
+      background-color: #a72828;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    form button:hover {
+      background-color: #8d1e1e;
+    }
+
+    .mapa p {
+      margin-bottom: 10px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 250px;
+      border: 0;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2em;
+      }
+      .oferta-contenedor {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Escuela Consuelo Rosas de Gil</h1>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#quienes-somos">Quiénes Somos</a>
+      <a href="#oferta">Oferta Educativa</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <h1>¿NECESITAS ESTUDIAR Y TRABAJAR?</h1>
+      <p>Termina tu primaria o secundaria con nosotros. Educación nocturna, inclusiva y flexible.</p>
+      <a href="#contacto" class="button">¡Contáctanos!</a>
+    </div>
+  </section>
+
+  <section class="quienes-somos" id="quienes-somos">
+    <h2>¿Quiénes Somos?</h2>
+    <div class="quienes-container">
+      <div class="info-tabla">
+        <table>
+          <tr><th>Entidad</th><td>Veracruz De Ignacio De La Llave</td></tr>
+          <tr><th>Municipio</th><td>Veracruz</td></tr>
+          <tr><th>Escuela</th><td>Profra. Consuelo Rosas de Gil</td></tr>
+          <tr><th>Nivel educativo</th><td>Primaria y Secundaria (Nocturna)</td></tr>
+          <tr><th>Dirección</th><td>Esteban Morales 777, Centro, Veracruz, México</td></tr>
+          <tr><th>Entre calles</th><td>Independencia y 5 de Mayo</td></tr>
+          <tr><th>Teléfono</th><td>2291 611687</td></tr>
+          <tr><th>Email</th><td>floripechi@hotmail.com</td></tr>
+          <tr><th>Control</th><td>Público</td></tr>
+          <tr><th>Turno</th><td>Nocturno</td></tr>
+          <tr><th>Clave del centro</th><td>30EBA0111S</td></tr>
+        </table>
+      </div>
+      <div class="info-texto">
+        <p>Nuestra escuela se dedica a brindar oportunidades educativas reales a quienes desean terminar sus estudios de primaria o secundaria en un horario accesible.</p>
+        <p>Atendemos tanto a jóvenes como a adultos que, por diversas razones, no pudieron concluir su educación básica.</p>
+        <p>Contamos con un equipo comprometido, un ambiente de respeto e inclusión y un modelo flexible que se adapta a tus necesidades.</p>
+        <p><strong>Este es tu momento. ¡Te esperamos con los brazos abiertos!</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="oferta" id="oferta">
+    <h2>Nuestra Oferta Educativa</h2>
+    <div class="oferta-contenedor">
+      <div class="card">
+        <img src="imagen1.jpg" alt="Modalidades flexibles">
+        <div class="card-content">
+          <h3>Diferentes Modalidades</h3>
+          <p>Contamos con diversas formas de estudio que se adaptan a tus tiempos y necesidades. Presencial, virtual, mixta.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="imagen2.jpg" alt="Atención personalizada">
+        <div class="card-content">
+          <h3>Atención Diversificada</h3>
+          <p>Nuestros docentes están capacitados para atender a estudiantes con distintas necesidades, capacidades y contextos.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="imagen3.jpg" alt="Inclusión">
+        <div class="card-content">
+          <h3>Escuela Inclusiva</h3>
+          <p>Ofrecemos un espacio seguro y respetuoso para personas con discapacidad y barreras para el aprendizaje.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contacto" id="contacto">
+    <div class="formulario">
+      <h2>Envíanos un mensaje</h2>
+      <form action="https://formsubmit.co/floripechi@hotmail.com" method="POST">
+        <label>Nombre</label>
+        <input type="text" name="nombre" required>
+
+        <label>Correo Electrónico</label>
+        <input type="email" name="correo" required>
+
+        <label>Información del Alumno</label>
+        <textarea name="mensaje" rows="5" required></textarea>
+
+        <input type="hidden" name="_captcha" value="false">
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+
+    <div class="mapa">
+      <h2>Visítanos</h2>
+      <p>Dirección: Esteban Morales 777, Centro, Veracruz, México, entre Independencia y 5 de Mayo</p>
+      <p>Tel: 2291 611687</p>
+      <p>Email: floripechi@hotmail.com</p>
+      <iframe src="https://maps.google.com/maps?q=19.19706,-96.13754&t=&z=17&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+  </section>
+</body>
+</html>
